@@ -1,0 +1,2 @@
+# BLE_PROXIMITY
+Arduino + ESP8266 BLE Proximity Library with HM-10 CC2541 CC2540
