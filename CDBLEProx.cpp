@@ -77,7 +77,7 @@ void CDBLEProximity::update() {
            String mac  = str_token(record,':',4); 
            String rssi = str_token(record,':',5); 
            int temp_rssi = rssi.toInt();
-           if (address!="00000000000000000000000000000000") {
+           if (address=="00000000000000000000000000000000") {
               devices_found++;
                if (temp_rssi > strongest_rssi) {
                   strongest_mac = mac;
