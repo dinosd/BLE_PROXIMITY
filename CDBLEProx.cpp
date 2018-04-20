@@ -46,6 +46,8 @@ void CDBLEProximity::update() {
   static int strongest_rssi = -1000;
   static String strongest_hilo = "";
   static String strongest_mac = "";
+  static String address = "";
+
   if (BLE_mode==1) {
       ss->print("AT+DISI?");
       response = "";
@@ -71,8 +73,8 @@ void CDBLEProximity::update() {
 
            String record = response.substring(0,78);
            response = response.substring(78);
-         
-           String address = str_token(record,':',2); 
+        
+           address = str_token(record,':',2); 
            String hilo = str_token(record,':',3); 
            String mac  = str_token(record,':',4); 
            String rssi = str_token(record,':',5); 
@@ -100,6 +102,7 @@ void CDBLEProximity::update() {
         sendEmptyEvent();
      }
      if (devices_found>0 && LAST_DEVICE.mac != strongest_mac) {
+	LAST_DEVICE.address = address;
         LAST_DEVICE.mac = strongest_mac;
         LAST_DEVICE.rssi = strongest_rssi;
         LAST_DEVICE.hilo = strongest_hilo;
@@ -124,6 +127,7 @@ void CDBLEProximity::update() {
   
 }
 void CDBLEProximity::sendEmptyEvent() {
+    LAST_DEVICE.address = "";
     LAST_DEVICE.mac = "";
     LAST_DEVICE.rssi = -1000;
     LAST_DEVICE.hi = 0;

@@ -4,6 +4,7 @@
 #ifndef CDBLEProx_h
 #define CDBLEProx_h
 struct BLE_DEVICE {
+  String address;
   String mac;
   int rssi;
   uint8_t hi;
