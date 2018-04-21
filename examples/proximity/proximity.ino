@@ -2,11 +2,11 @@
 #include <CDBLEProx.h>
 
 void ble_event(BLE_PROXIMITY_EVENT eventArgs);
-SoftwareSerial sw(8,9);
+SoftwareSerial sw(D5,D6);
 CDBLEProximity ble(&sw,ble_event);
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(57600);
   ble.begin();
 }
 
