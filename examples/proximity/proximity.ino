@@ -22,6 +22,7 @@ void ble_event(BLE_PROXIMITY_EVENT eventArgs) {
     }
     if (eventArgs.eventID==BLE_EVENT_ON_DEVICE_APPROACH) {
         Serial.println("New device");
+        Serial.print("UUID: "); Serial.println(eventArgs.device.address);
         Serial.print("MAC: "); Serial.println(eventArgs.device.mac);
         Serial.print("HL : "); Serial.println(eventArgs.device.hilo);
         Serial.print("HI : "); Serial.println(eventArgs.device.hi);
@@ -31,6 +32,7 @@ void ble_event(BLE_PROXIMITY_EVENT eventArgs) {
     }
     if (eventArgs.eventID==BLE_EVENT_ON_DEVICE_MOVED) {
         Serial.println("Device moved");
+        Serial.print("UUID: "); Serial.println(eventArgs.device.address);
         Serial.print("MAC: "); Serial.println(eventArgs.device.mac);
         Serial.print("HL : "); Serial.println(eventArgs.device.hilo);
         Serial.print("HI : "); Serial.println(eventArgs.device.hi);
@@ -39,4 +41,3 @@ void ble_event(BLE_PROXIMITY_EVENT eventArgs) {
         Serial.println("");
     }
 }
-
